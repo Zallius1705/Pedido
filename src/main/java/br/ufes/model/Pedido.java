@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package br.ufes.model;
+import java.sql.Timestamp;
 
 /**
  *
  * @author Lucas
  */
 public class Pedido {
-    private Long codigo;
+    private Timestamp codigo;
     private CarrinhoDeCompra carrinho;
     private Situacao estado;
     protected double desconto;
@@ -18,8 +19,8 @@ public class Pedido {
     protected double valorAPagar;
     protected IDescontosStrategy descontoStrategy;
 
-    public Pedido(Long codigo, CarrinhoDeCompra carrinho, IDescontosStrategy descontoStrategy) {
-        this.codigo = codigo;
+    public Pedido(CarrinhoDeCompra carrinho, IDescontosStrategy descontoStrategy) {
+        this.codigo = new Timestamp(System.currentTimeMillis());
         this.carrinho = carrinho;
         this.descontoStrategy = descontoStrategy;
         this.aplicarDesconto();
@@ -31,7 +32,7 @@ public class Pedido {
         this.valorAPagar = carrinho.getValor() - valorDesconto;
     }
 
-    public Long getCodigo() {
+    public Timestamp getCodigo() {
         return codigo;
     }
 
