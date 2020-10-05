@@ -17,14 +17,14 @@ public class Principal {
 
             Cliente cliente1 = new Cliente("Fulano", "123.456.789-01");
 
-            Produto produto1 = new Produto("Caneta", 3.50, 8);
+            Produto produto1 = new Produto("Caneta", "Material escolar", 3.50, 8);
 
             CarrinhoDeCompra pedido1 = new CarrinhoDeCompra(cliente1,
                     produto1, 5,
                     LocalDate.now()
             );
 
-            pedido1.addItem(new Produto("Folha Papel A4", 0.05, 10), 10);
+            pedido1.addItem(new Produto("Folha Papel A4", "Material escolar", 0.05, 10), 10);
 
             System.out.println(pedido1);
 

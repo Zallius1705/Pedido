@@ -13,7 +13,7 @@ public final class Item {
         if (!produto.estoqueDisponivel(quantidadeAdquirida)) {
             throw new RuntimeException("Estoque indisponível para atender a quantidade solicitada (" + quantidadeAdquirida
                     + ") para o produto " + produto.getNome()
-                    + ", restam " + produto.getQuantidade() + " em estoque.");
+                    + ", restam " + produto.getEstoque().getQuantidade() + " em estoque.");
         }
         this.produto = produto;
         this.quantidade = quantidadeAdquirida;

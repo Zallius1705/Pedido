@@ -1,20 +1,24 @@
 package br.ufes.model;
 
+import java.util.ArrayList;
+
 public final class Produto {
 
     private String nome;
     private double valorUnitario;
     private double valorUltimaCompra;
-    private double quantidade;
+    private String tipo;
+    private Estoque estoque;
 
-    public Produto(String nome, double valorUnitario, double quantidade) {
+    public Produto(String nome, String tipo, double valorUnitario, double quantidade) {
         this.nome = nome;
+        this.tipo = tipo;
         setValorUnitario(valorUnitario);
-        this.quantidade = quantidade;
+        this.estoque = new Estoque(quantidade);
     }
 
     public boolean estoqueDisponivel(double quantidadeNecessaria) {
-        return this.quantidade >= quantidadeNecessaria;
+        return this.estoque.getQuantidade() >= quantidadeNecessaria;
     }
 
     public String getNome() {
@@ -29,8 +33,12 @@ public final class Produto {
         return valorUltimaCompra;
     }
 
-    public double getQuantidade() {
-        return quantidade;
+    public String getTipo() {
+        return tipo;
+    }
+
+    public Estoque getEstoque() {
+        return estoque;
     }
 
     public void setNome(String nome) {
@@ -51,9 +59,10 @@ public final class Produto {
     @Override
     public String toString() {
         return "Produto: " + nome
+                + ", tipo: " + tipo
                 + ", valor unitario: R$" + valorUnitario
                 + ", valor da ultima compra: R$" + valorUltimaCompra
-                + ", quantidade em estoque: " + quantidade;
+                + ", quantidade em estoque: " + estoque;
     }
 
 }
