@@ -1,0 +1,5 @@
+br\ufes\model\Pedido.class
+br\ufes\model\Produto.class
+br\ufes\Principal.class
+br\ufes\model\Cliente.class
+br\ufes\model\ItemPedido.class
