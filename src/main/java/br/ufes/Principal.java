@@ -4,6 +4,7 @@ import br.ufes.model.Cliente;
 import br.ufes.model.CarrinhoDeCompra;
 import br.ufes.model.Produto;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -15,7 +16,7 @@ public class Principal {
 
         try {
 
-            Cliente cliente1 = new Cliente("Fulano", "123.456.789-01");
+            Cliente cliente1 = new Cliente("Fulano", "123.456.789-01",  LocalDate.now());
 
             Produto produto1 = new Produto("Caneta", "Material escolar", 3.50, 8);
 
