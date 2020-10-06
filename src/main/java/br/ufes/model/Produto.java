@@ -1,7 +1,5 @@
 package br.ufes.model;
 
-import java.util.ArrayList;
-
 public final class Produto {
 
     private String nome;

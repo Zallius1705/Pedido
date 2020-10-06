@@ -5,7 +5,6 @@
  */
 package br.ufes.model;
 import java.sql.Timestamp;
-import java.text.DecimalFormat;
 import java.time.LocalDate;
 
 /**
@@ -40,6 +39,31 @@ public class Pedido {
         this.valorAPagar = carrinho.getValor() - valorDesconto;
     }
 
+    
+    public void removerItemPedidoPorNome(String nomeProduto){
+        try{
+            this.carrinho.removerItem(nomeProduto);
+        }catch(Exception e) {
+            System.err.println("Falha: " + e.getMessage()); 
+        }
+    }
+    
+    public void alterarQuantidadeItemPedido(String nomeProduto, double quantidade){
+        try{
+            this.carrinho.alterarQuantidadeItemPorNome(nomeProduto, quantidade);
+        }catch(Exception e) {
+            System.err.println("Falha: " + e.getMessage()); 
+        }
+    }
+    
+   // ITEM 11) 
+   // private void verificaVencimento() {;
+   //     if(LocalDate.now().isAfter(this.dataValidade)){
+   //         this.estado = Situacao.VENCIDO;
+   //     }        
+   // }
+    
+    
     public Timestamp getCodigo() {
         return codigo;
     }

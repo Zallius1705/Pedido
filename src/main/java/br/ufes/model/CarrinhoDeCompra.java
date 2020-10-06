@@ -2,8 +2,6 @@ package br.ufes.model;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +31,17 @@ public final class CarrinhoDeCompra {
         itens.add(new Item(produto, quantidade));
         calcularValor();
     }
-
+    
+    protected void alterarQuantidadeItemPorNome(String nomeProduto, double quantidade){
+          if(this.getItemPorNome(nomeProduto) == null){
+              throw new RuntimeException("Produto não encontrado");
+          }
+          if(quantidade == 0) removerItem(nomeProduto);
+          else{
+              this.getItemPorNome(nomeProduto).get().setQuantidade(quantidade);
+          }
+    }
+    
     protected Optional<Item> getItemPorNome(String nomeProduto) {
         Optional<Item> itemEncontrado = Optional.empty();
         for (Item item : itens) {

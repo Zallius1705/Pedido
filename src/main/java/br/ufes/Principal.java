@@ -21,8 +21,7 @@ public class Principal {
             Produto produto1 = new Produto("Caneta", "Material escolar", 3.50, 8);
 
             CarrinhoDeCompra pedido1 = new CarrinhoDeCompra(cliente1,
-                    produto1, 5,
-                    LocalDate.now()
+                    produto1, 5
             );
 
             pedido1.addItem(new Produto("Folha Papel A4", "Material escolar", 0.05, 10), 10);

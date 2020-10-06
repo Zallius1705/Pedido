@@ -41,6 +41,10 @@ public final class Item {
     public Produto getProduto() {
         return produto;
     }
+    
+    public void setQuantidade(double quantidade) {
+        this.quantidade = quantidade;
+    }
 
     @Override
     public String toString() {
