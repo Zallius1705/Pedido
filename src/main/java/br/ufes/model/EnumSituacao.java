@@ -9,7 +9,7 @@ package br.ufes.model;
  *
  * @author Lucas
  */
-public enum Situacao {
+public enum EnumSituacao {
     //PAGO, 
     //VENCIDO, 
     //EM_ANDAMENTO;
@@ -20,7 +20,7 @@ public enum Situacao {
     
     private String valor;
     
-    Situacao(String valor) {
+    EnumSituacao(String valor) {
         this.valor = valor;
     }
 

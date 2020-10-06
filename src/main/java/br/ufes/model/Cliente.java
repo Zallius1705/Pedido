@@ -5,14 +5,14 @@ import java.time.LocalDate;
 public final class Cliente {
 
     private final String nome;
-    private final String CNPJOuCPF;
+    private final String cNPJOuCPF;
     private final LocalDate dataNascimento;
     private double cupons;
     private Endereco endereco;
 
     public Cliente(String nome, String codigo, LocalDate dataNascimento, Endereco endereco) {
         this.nome = nome;
-        this.CNPJOuCPF = codigo;
+        this.cNPJOuCPF = codigo;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
     }
@@ -22,7 +22,7 @@ public final class Cliente {
     }
 
     public String getCNPJOuCPF() {
-        return CNPJOuCPF;
+        return cNPJOuCPF;
     }
 
     public LocalDate getDataNascimento() {
@@ -39,7 +39,7 @@ public final class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente: " + nome + ", CNPJ/CPF = " + CNPJOuCPF;
+        return "Cliente: " + nome + ", CNPJ/CPF = " + cNPJOuCPF;
     }
 
 }

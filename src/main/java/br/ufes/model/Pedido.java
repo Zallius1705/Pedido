@@ -12,10 +12,9 @@ import java.time.LocalDate;
  * @author Lucas
  */
 public class Pedido {
-    private Timestamp codigo;
-    private CarrinhoDeCompra carrinho;
-    private Situacao estado;
-    protected double desconto;
+    private final Timestamp codigo;
+    private final CarrinhoDeCompra carrinho;
+    private EnumSituacao situacao;
     protected double valorDesconto;
     protected double valorAPagar;
     protected final LocalDate data;
@@ -27,15 +26,14 @@ public class Pedido {
         this.codigo = new Timestamp(System.currentTimeMillis());
         this.carrinho = carrinho;
         this.descontoStrategy = descontoStrategy;
-        this.estado = Situacao.EM_ANDAMENTO;
+        this.situacao = EnumSituacao.EM_ANDAMENTO;
         this.aplicarDesconto();
         this.data = data;
         this.dataValidade = data.plusDays(5);
     }
     
     private void aplicarDesconto() {
-        this.desconto = this.descontoStrategy.calculaDesconto(this.carrinho);
-        this.valorDesconto = carrinho.getValor() * desconto;
+        this.valorDesconto = this.descontoStrategy.calculaDesconto(this.carrinho) * carrinho.getValor();
         this.valorAPagar = carrinho.getValor() - valorDesconto;
     }
 
@@ -72,8 +70,8 @@ public class Pedido {
         return carrinho;
     }
 
-    public Situacao getEstado() {
-        return estado;
+    public EnumSituacao getEstado() {
+        return situacao;
     }
     
     public LocalDate getData() {
@@ -92,8 +90,8 @@ public class Pedido {
         return valorAPagar;
     }
 
-    public void setEstado(Situacao estado) {
-        this.estado = estado;
+    public void setEstado(EnumSituacao estado) {
+        this.situacao = estado;
     }
     
 }

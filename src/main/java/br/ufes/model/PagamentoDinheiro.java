@@ -12,8 +12,8 @@ package br.ufes.model;
 public class PagamentoDinheiro implements IPagamentoStrategy{
     @Override
     public void realizaPagamento(Pedido pedido) {
-        if(pedido.getEstado() == Situacao.EM_ANDAMENTO) {
-            pedido.setEstado(Situacao.PAGO);
+        if(pedido.getEstado() == EnumSituacao.EM_ANDAMENTO) {
+            pedido.setEstado(EnumSituacao.PAGO);
         }   else {
             throw new RuntimeException("Pedido não está mais em andamento!");
         }
