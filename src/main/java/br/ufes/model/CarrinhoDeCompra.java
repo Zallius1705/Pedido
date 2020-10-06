@@ -13,17 +13,13 @@ public final class CarrinhoDeCompra {
     protected Cliente cliente;
     protected double valor;
     protected final ArrayList<Item> itens = new ArrayList<>();
-    protected final LocalDate data;
-    protected final LocalDate dataVencimento;
 
-    public CarrinhoDeCompra(Cliente cliente, Produto produto, double quantidade, LocalDate data) {
+    public CarrinhoDeCompra(Cliente cliente, Produto produto, double quantidade) {
         if (cliente == null) {
             throw new RuntimeException("Informe um cliente válido");
         }
         
         this.cliente = cliente;
-        this.data = data;
-        this.dataVencimento = data.plusMonths(1);
         this.addItem(produto, quantidade);
     }
 
@@ -66,14 +62,6 @@ public final class CarrinhoDeCompra {
         calcularValor();
     }
 
-    public LocalDate getData() {
-        return data;
-    }
-
-    public LocalDate getDataVencimento() {
-        return dataVencimento;
-    }
-
     public double getValor() {
         return valor;
     }
@@ -89,15 +77,13 @@ public final class CarrinhoDeCompra {
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("0.00");
-        String retorno = "--------------- Pedido --------------\n";
+        String retorno = "Carrinho de compras\n";
         retorno += cliente + "\n";
-        retorno += "Data: " + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + ", ";
-        retorno += "Data de vencimento: " + dataVencimento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\n";
         retorno += "Valor sem desconto: R$ " + df.format(getValor()) + "\n";
         retorno += "Itens do pedido:\n";
         for (Item item : itens) {
             retorno += "\t- " + item.toString() + "\n";
-        }
+    }
 
         return retorno;
     }

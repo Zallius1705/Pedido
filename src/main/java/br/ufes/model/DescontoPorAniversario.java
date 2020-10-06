@@ -10,8 +10,8 @@ package br.ufes.model;
  * @author Lucas
  */
 public class DescontoPorAniversario {
-    public double calculaDesconto(CarrinhoDeCompra carrinhoDeCompra) {
-        if (carrinhoDeCompra.getCliente().getDataNascimento().getDayOfYear() == carrinhoDeCompra.getData().getDayOfYear()) return 0.2;
+    public double calculaDesconto(Pedido pedido) {
+        if (pedido.getCarrinho().getCliente().getDataNascimento().getDayOfYear() == pedido.getData().getDayOfYear()) return 0.2;
         
         return 0;
     }

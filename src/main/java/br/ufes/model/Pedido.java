@@ -5,6 +5,8 @@
  */
 package br.ufes.model;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
 
 /**
  *
@@ -17,13 +19,19 @@ public class Pedido {
     protected double desconto;
     protected double valorDesconto;
     protected double valorAPagar;
+    protected final LocalDate data;
+    protected final LocalDate dataValidade;
     protected IDescontosStrategy descontoStrategy;
+    protected IPagamentoStrategy pagamentoStrategy;
 
-    public Pedido(CarrinhoDeCompra carrinho, IDescontosStrategy descontoStrategy) {
+    public Pedido(CarrinhoDeCompra carrinho, LocalDate data, IDescontosStrategy descontoStrategy, IPagamentoStrategy pagamentoStrategy) {
         this.codigo = new Timestamp(System.currentTimeMillis());
         this.carrinho = carrinho;
         this.descontoStrategy = descontoStrategy;
+        this.estado = Situacao.EM_ANDAMENTO;
         this.aplicarDesconto();
+        this.data = data;
+        this.dataValidade = data.plusDays(5);
     }
     
     private void aplicarDesconto() {
@@ -43,6 +51,14 @@ public class Pedido {
     public Situacao getEstado() {
         return estado;
     }
+    
+    public LocalDate getData() {
+        return data;
+    }
+
+    public LocalDate getDataValidade() {
+        return dataValidade;
+    }
 
     public double getValorDesconto() {
         return valorDesconto;
@@ -50,6 +66,10 @@ public class Pedido {
 
     public double getValorAPagar() {
         return valorAPagar;
+    }
+
+    public void setEstado(Situacao estado) {
+        this.estado = estado;
     }
     
 }
