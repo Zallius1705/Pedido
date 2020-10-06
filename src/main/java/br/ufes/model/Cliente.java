@@ -8,11 +8,13 @@ public final class Cliente {
     private final String CNPJOuCPF;
     private final LocalDate dataNascimento;
     private double cupons;
+    private Endereco endereco;
 
-    public Cliente(String nome, String codigo, LocalDate dataNascimento) {
+    public Cliente(String nome, String codigo, LocalDate dataNascimento, Endereco endereco) {
         this.nome = nome;
         this.CNPJOuCPF = codigo;
         this.dataNascimento = dataNascimento;
+        this.endereco = endereco;
     }
 
     public String getNome() {
