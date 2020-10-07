@@ -16,8 +16,6 @@ import org.json.JSONObject;
  * @author João Paulo
  */
 public class ArquivoJSON implements IArquivo{
-    
-    //private NotaFiscal nota;
 
     @Override
     public void geraNota(NotaFiscal nota) {

@@ -21,8 +21,9 @@ public class Pedido {
     protected final LocalDate dataValidade;
     protected IDescontosStrategy descontoStrategy;
     protected IPagamentoStrategy pagamentoStrategy;
+    protected IArquivo arquivo;
 
-    public Pedido(CarrinhoDeCompra carrinho, LocalDate data, IDescontosStrategy descontoStrategy, IPagamentoStrategy pagamentoStrategy) {
+    public Pedido(CarrinhoDeCompra carrinho, LocalDate data, IDescontosStrategy descontoStrategy, IPagamentoStrategy pagamentoStrategy, IArquivo arquivo) {
         this.codigo = new Timestamp(System.currentTimeMillis());
         this.carrinho = carrinho;
         this.descontoStrategy = descontoStrategy;
@@ -30,6 +31,8 @@ public class Pedido {
         this.aplicarDesconto();
         this.data = data;
         this.dataValidade = data.plusDays(5);
+        this.pagamentoStrategy = pagamentoStrategy;
+        this.arquivo = arquivo;
     }
     
     private void aplicarDesconto() {

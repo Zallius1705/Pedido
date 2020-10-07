@@ -11,19 +11,20 @@ package br.ufes.model;
  */
 public class NotaFiscal {
     
-    private long id;
+    private final long id;
     private double valorNF;
     private double valorIcms;
     private Pedido pedido;
+    private IArquivo arquivo;
 
-    public NotaFiscal(long id, double valorNF, double valorIcms, Pedido pedido) {
+    public NotaFiscal(long id, double valorNF, double valorIcms, Pedido pedido, IArquivo arquivo) {
         this.id = id;
         this.valorNF = valorNF;
         this.valorIcms = valorIcms;
         this.pedido = pedido;
+        this.arquivo = arquivo;
     }
     
-
     public long getId() {
         return id;
     }

@@ -20,8 +20,6 @@ import java.util.logging.Logger;
  */
 public class ArquivoPDF implements IArquivo{
     
-    
-
     @Override
     public void geraNota(NotaFiscal nota) {
         
