@@ -1,6 +1,7 @@
 package br.ufes.model;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -57,6 +58,12 @@ public final class CarrinhoDeCompra {
         for (Item item : itens) {
             valor += item.getValorItem();
         }
+    }
+    
+    public Pedido fechar() {
+        Pedido pedido = new Pedido(this, LocalDate.now());
+        
+        return pedido;
     }
 
     public void removerItem(String nomeProduto) {

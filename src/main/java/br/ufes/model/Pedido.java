@@ -23,6 +23,14 @@ public class Pedido {
     protected IPagamentoStrategy pagamentoStrategy;
     protected IArquivo arquivo;
 
+    public Pedido(CarrinhoDeCompra carrinho, LocalDate data) {
+        this.codigo = new Timestamp(System.currentTimeMillis());
+        this.carrinho = carrinho;
+        this.situacao = EnumSituacao.EM_ANDAMENTO;
+        this.data = data;
+        this.dataValidade = data.plusDays(5);
+    }
+    
     public Pedido(CarrinhoDeCompra carrinho, LocalDate data, IDescontosStrategy descontoStrategy, IPagamentoStrategy pagamentoStrategy, IArquivo arquivo) {
         this.codigo = new Timestamp(System.currentTimeMillis());
         this.carrinho = carrinho;
@@ -57,13 +65,11 @@ public class Pedido {
         }
     }
     
-   // ITEM 11) 
-   // private void verificaVencimento() {;
-   //     if(LocalDate.now().isAfter(this.dataValidade)){
-   //         this.estado = Situacao.VENCIDO;
-   //     }        
-   // }
-    
+    public void verificaVencimento() {
+        if(LocalDate.now().isAfter(this.dataValidade)) {
+            this.situacao = EnumSituacao.VENCIDO;
+        }        
+    }
     
     public Timestamp getCodigo() {
         return codigo;
