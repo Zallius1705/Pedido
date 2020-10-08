@@ -11,12 +11,7 @@ import br.ufes.model.Compra;
  *
  * @author Lucas
  */
-public abstract class Desconto {
-    protected Desconto proximo;
-    
-    public void setProximo(Desconto proximo) {
-        this.proximo = proximo;
-    }
-    
-    public abstract void desconto(Compra compra);
+public interface DescontoHandler {
+    public void setProximo(DescontoHandler proximo);
+    public void handleRequest(Compra compra) throws Exception;
 }

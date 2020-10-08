@@ -12,18 +12,31 @@ import br.ufes.model.Item;
  *
  * @author Lucas
  */
-public class TipoDescontoHandler extends Desconto{
-    private boolean aux = false;
+public class TipoDescontoHandler extends AbstractDescontoHandler{
+    /*private boolean aux = false;
     @Override
-    public void desconto(Compra compra) {
-        compra.getCarrinho().getItens().stream().filter(item -> ("Lanjerri".equals(item.getProduto().getTipo()))).map(item -> {
+    public void handleRequest(Compra compra) {
+        compra.getCarrinho().getItens().stream().filter(item -> ("Material Escolar".equals(item.getProduto().getTipo()))).map(item -> {
             compra.setValorDesconto(compra.getValorDesconto() + (item.getValorItem() * 0.30));
             return item;
         }).forEachOrdered((Item item) -> {
             item.setValorItem(item.getValorItem() - (item.getValorItem() * 0.30));
         });
         if(proximo != null) {
-            proximo.desconto(compra);
+            proximo.handleRequest(compra);
         }
+    }
+    */
+    @Override
+    public boolean accept(Compra compra) {
+        for (Item item : compra.getCarrinho().getItens()) {
+            
+        }
+        return false;
+    }
+
+    @Override
+    public void doHandle(Compra compra) {
+        
     }
 }

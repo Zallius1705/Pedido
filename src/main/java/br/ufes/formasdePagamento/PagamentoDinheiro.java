@@ -5,8 +5,8 @@
  */
 package br.ufes.formasdePagamento;
 
-import br.ufes.estado.EstadoInicial;
-import br.ufes.estado.EstadoPago;
+import br.ufes.estadoPedido.EstadoInicial;
+import br.ufes.estadoPedido.EstadoPago;
 import br.ufes.model.Pedido;
 
 /**

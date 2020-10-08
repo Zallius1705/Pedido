@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.estado;
+package br.ufes.estadoPedido;
 
 import br.ufes.model.NotaFiscal;
 import br.ufes.model.Pedido;

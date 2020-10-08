@@ -11,16 +11,18 @@ import br.ufes.model.Compra;
  *
  * @author Lucas
  */
-public class CuponsDescontoHandler extends Desconto{
+public class CuponsDescontoHandler extends AbstractDescontoHandler{
     @Override
-    public void desconto(Compra compra) {
-        if(compra.getCarrinho().getCliente().getCupons() >= 10) {
-            compra.setValorDesconto(0.15 + compra.getValorDesconto());
-            compra.getCarrinho().getCliente().setCupons(compra.getCarrinho().getCliente().getCupons() - 10);
-        }
-        
-        if(proximo != null) {
-            proximo.desconto(compra);
-        }
+    public boolean accept(Compra compra) {
+         if(compra.getCarrinho().getCliente().getCupons() >= 10) {
+             return true;
+         }
+         return false;
+    }
+
+    @Override
+    public void doHandle(Compra compra) {
+        compra.setValorDesconto(0.15 + compra.getValorDesconto());
+        compra.getCarrinho().getCliente().setCupons(compra.getCarrinho().getCliente().getCupons() - 10);
     }
 }

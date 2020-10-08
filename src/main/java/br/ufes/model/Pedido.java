@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package br.ufes.model;
-import br.ufes.estado.EstadoInicial;
-import br.ufes.estado.EstadoSituacao;
+import br.ufes.estadoPedido.EstadoInicial;
+import br.ufes.estadoPedido.EstadoSituacao;
 import br.ufes.formasdePagamento.IPagamentoStrategy;
 import java.sql.Timestamp;
 import java.time.LocalDate;

@@ -1,5 +1,9 @@
 package br.ufes.model;
 
+import br.ufes.regrasDeDesconto.AniversarioDescontoHandler;
+import br.ufes.regrasDeDesconto.CuponsDescontoHandler;
+import br.ufes.regrasDeDesconto.AbstractDescontoHandler;
+import br.ufes.regrasDeDesconto.TipoDescontoHandler;
 import java.time.LocalDate;
 
 /**
@@ -9,11 +13,19 @@ import java.time.LocalDate;
 public class Compra {
     protected final CarrinhoDeCompra carrinho;
     protected double valorDesconto;
+    protected AbstractDescontoHandler desconto;
     protected LocalDate dataCompra;
 
     public Compra(CarrinhoDeCompra carrinho) {
         this.carrinho = carrinho;
         this.dataCompra = LocalDate.now();
+        
+        //Chain handlers
+        AbstractDescontoHandler aniversarioDescontoHandler = new AniversarioDescontoHandler();
+        AbstractDescontoHandler cuponsDescontoHandler = new CuponsDescontoHandler();
+        AbstractDescontoHandler tipoDescontoHandler = new TipoDescontoHandler();
+        
+        this.desconto = aniversarioDescontoHandler;
     }
     
     public Pedido fechar() {

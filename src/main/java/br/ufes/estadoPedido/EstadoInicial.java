@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.estado;
+package br.ufes.estadoPedido;
 
 import br.ufes.model.NotaFiscal;
 import br.ufes.model.Pedido;
@@ -12,8 +12,7 @@ import br.ufes.model.Pedido;
  *
  * @author Lucas
  */
-public class EstadoVencido implements EstadoSituacao {
-
+public class EstadoInicial implements EstadoSituacao{
     @Override
     public void alterarEstado(Pedido pedido) {
         pedido.setEstado(this);
@@ -23,5 +22,6 @@ public class EstadoVencido implements EstadoSituacao {
     public NotaFiscal gerarNotaFiscal(Pedido pedido) {
         return null;
     }
+    
     
 }

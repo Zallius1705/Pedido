@@ -11,15 +11,17 @@ import br.ufes.model.Compra;
  *
  * @author Lucas
  */
-public class AniversarioDescontoHandler extends Desconto{
+public class AniversarioDescontoHandler extends AbstractDescontoHandler{
     @Override
-    public void desconto(Compra compra) {
+    public boolean accept(Compra compra) {
         if(compra.getCarrinho().getCliente().getDataNascimento().getDayOfYear() == compra.getDataCompra().getDayOfYear()) {
-            compra.setValorDesconto(0.1 + compra.getValorDesconto());
+            return true;
         }
-        
-        if(proximo != null) {
-            proximo.desconto(compra);
-         }
+        return false;
+    }
+
+    @Override
+    public void doHandle(Compra compra) {
+        compra.setValorDesconto(0.1 + compra.getValorDesconto());
     }
 }
