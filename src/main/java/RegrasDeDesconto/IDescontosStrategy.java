@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.model;
+package RegrasDeDesconto;
+
+import br.ufes.model.CarrinhoDeCompra;
 
 /**
  *
  * @author Lucas
  */
-public interface IPagamentoStrategy {
-    public void realizaPagamento(Pedido pedido);
+public interface IDescontosStrategy {
+    public double calcula(CarrinhoDeCompra carrinhoDeCompra);
 }

@@ -5,18 +5,20 @@
  */
 package br.ufes.model;
 
+import Enum.EnumUF;
+
 /**
  *
  * @author Maycon
  */
 public class Endereco {
-    private String logradouro;
-    private int numero;
-    private String complemento;
-    private String cep;
-    private String bairro;
-    private String cidade;
-    private EnumUF uf;
+    private final String logradouro;
+    private final int numero;
+    private final String complemento;
+    private final String cep;
+    private final String bairro;
+    private final String cidade;
+    private final EnumUF uf;
 
     public Endereco(String logradouro, int numero, String complemento, String cep, String bairro, String cidade, EnumUF uf) {
         this.logradouro = logradouro;

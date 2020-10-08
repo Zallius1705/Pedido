@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.model;
+package Arquivo;
 
+import br.ufes.model.NotaFiscal;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -18,7 +19,7 @@ import org.json.JSONObject;
 public class ArquivoJSON implements IArquivo{
 
     @Override
-    public void geraNota(NotaFiscal nota) {
+    public void gerar(NotaFiscal nota) {
         
         FileWriter arquivo = null;
         JSONObject objetoJson = new JSONObject();
@@ -36,8 +37,6 @@ public class ArquivoJSON implements IArquivo{
         }
         
         System.out.println(objetoJson.toString());
-        
-        
     }
 
     

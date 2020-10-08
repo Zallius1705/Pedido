@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.model;
+package FormasdePagamento;
+
+import Enum.EnumSituacao;
+import br.ufes.model.Pedido;
 
 /**
  *
@@ -12,7 +15,7 @@ package br.ufes.model;
 public class PagamentoDinheiro implements IPagamentoStrategy{
     
     @Override
-    public void realizaPagamento(Pedido pedido) {
+    public void realiza(Pedido pedido) {
         pedido.verificaVencimento();
         
         if(pedido.getEstado() == EnumSituacao.EM_ANDAMENTO) {

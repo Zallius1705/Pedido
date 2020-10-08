@@ -5,6 +5,8 @@
  */
 package br.ufes.model;
 
+import Arquivo.IArquivo;
+
 /**
  *
  * @author Maycon
@@ -15,14 +17,12 @@ public class NotaFiscal {
     private double valorNF;
     private double valorIcms;
     private Pedido pedido;
-    private IArquivo arquivo;
 
-    public NotaFiscal(long id, double valorNF, double valorIcms, Pedido pedido, IArquivo arquivo) {
+    public NotaFiscal(long id, double valorNF, double valorIcms, Pedido pedido) {
         this.id = id;
         this.valorNF = valorNF;
         this.valorIcms = valorIcms;
         this.pedido = pedido;
-        this.arquivo = arquivo;
     }
     
     public long getId() {

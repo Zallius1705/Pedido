@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.model;
+package RegrasDeDesconto;
+
+import br.ufes.model.Pedido;
 
 /**
  *
  * @author Lucas
  */
 public class DescontoPorAniversario {
-    public double calculaDesconto(Pedido pedido) {
+    public double calcula(Pedido pedido) {
         if (pedido.getCarrinho().getCliente().getDataNascimento().getDayOfYear() == pedido.getData().getDayOfYear()) return 0.2;
         
         return 0;

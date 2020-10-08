@@ -59,12 +59,6 @@ public final class CarrinhoDeCompra {
             valor += item.getValorItem();
         }
     }
-    
-    public Pedido fechar() {
-        Pedido pedido = new Pedido(this, LocalDate.now());
-        
-        return pedido;
-    }
 
     public void removerItem(String nomeProduto) {
 

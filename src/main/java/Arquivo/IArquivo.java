@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.model;
+package Arquivo;
+
+import br.ufes.model.NotaFiscal;
 
 /**
  *
@@ -11,6 +13,6 @@ package br.ufes.model;
  */
 public interface IArquivo {
     
-    public void geraNota(NotaFiscal nota);
+    public void gerar(NotaFiscal nota);
     
 }

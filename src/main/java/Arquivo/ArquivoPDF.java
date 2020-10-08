@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufes.model;
+package Arquivo;
 
+import br.ufes.model.NotaFiscal;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
 public class ArquivoPDF implements IArquivo{
     
     @Override
-    public void geraNota(NotaFiscal nota) {
+    public void gerar(NotaFiscal nota) {
         
         Document documento = new Document();
         
@@ -36,8 +37,6 @@ public class ArquivoPDF implements IArquivo{
         }
         
         System.out.println("PDF gerado!");
-        
-        
     }
     
 }

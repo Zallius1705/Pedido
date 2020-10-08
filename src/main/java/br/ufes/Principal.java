@@ -3,10 +3,9 @@ package br.ufes;
 import br.ufes.model.Cliente;
 import br.ufes.model.CarrinhoDeCompra;
 import br.ufes.model.Endereco;
-import br.ufes.model.EnumUF;
+import Enum.EnumUF;
 import br.ufes.model.Produto;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  *
