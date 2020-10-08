@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Arquivo;
+package br.ufes.arquivo;
 
 import br.ufes.model.NotaFiscal;
 import com.itextpdf.text.Document;

@@ -3,7 +3,7 @@ package br.ufes;
 import br.ufes.model.Cliente;
 import br.ufes.model.CarrinhoDeCompra;
 import br.ufes.model.Endereco;
-import Enum.EnumUF;
+import br.ufes.enums.EnumUF;
 import br.ufes.model.Produto;
 import java.time.LocalDate;
 

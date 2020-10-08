@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FormasdePagamento;
+package br.ufes.formasdePagamento;
 
 import br.ufes.model.Pedido;
 

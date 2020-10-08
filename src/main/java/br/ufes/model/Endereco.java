@@ -5,7 +5,7 @@
  */
 package br.ufes.model;
 
-import Enum.EnumUF;
+import br.ufes.enums.EnumUF;
 
 /**
  *

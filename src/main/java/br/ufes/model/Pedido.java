@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 package br.ufes.model;
-import Enum.EnumSituacao;
-import FormasdePagamento.IPagamentoStrategy;
-import RegrasDeDesconto.IDescontosStrategy;
-import Arquivo.IArquivo;
+import br.ufes.enums.EnumSituacao;
+import br.ufes.formasdePagamento.IPagamentoStrategy;
+import br.ufes.regrasDeDesconto.IDescontosStrategy;
+import br.ufes.arquivo.IArquivo;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 

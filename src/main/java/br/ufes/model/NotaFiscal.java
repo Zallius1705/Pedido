@@ -5,7 +5,7 @@
  */
 package br.ufes.model;
 
-import Arquivo.IArquivo;
+import br.ufes.arquivo.IArquivo;
 
 /**
  *
