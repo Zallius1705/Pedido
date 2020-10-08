@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 package br.ufes.model;
-import br.ufes.enums.EnumSituacao;
+import br.ufes.estado.EstadoInicial;
+import br.ufes.estado.EstadoSituacao;
 import br.ufes.formasdePagamento.IPagamentoStrategy;
-import br.ufes.regrasDeDesconto.IDescontosStrategy;
-import br.ufes.arquivo.IArquivo;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
@@ -16,21 +15,21 @@ import java.time.LocalDate;
  * @author Lucas
  */
 public class Pedido {
-    private final Timestamp codigo;
-    private final CarrinhoDeCompra carrinho;
-    private EnumSituacao situacao;
-    protected double valorDesconto;
+    protected final Timestamp codigo;
+    protected final CarrinhoDeCompra carrinho;
+    protected EstadoSituacao estado;
     protected double valorAPagar;
     protected final LocalDate data;
     protected final LocalDate dataValidade;
     protected IPagamentoStrategy pagamentoStrategy;
 
-    public Pedido(CarrinhoDeCompra carrinho, LocalDate data) {
+    public Pedido(CarrinhoDeCompra carrinho, LocalDate data, double valorAPagar) {
         this.codigo = new Timestamp(System.currentTimeMillis());
         this.carrinho = carrinho;
-        this.situacao = EnumSituacao.EM_ANDAMENTO;
         this.data = data;
         this.dataValidade = data.plusDays(5);
+        this.setEstado(new EstadoInicial());
+        this.valorAPagar = valorAPagar;
     }
     /*
     private void aplicarDesconto() {
@@ -38,12 +37,6 @@ public class Pedido {
         this.valorAPagar = carrinho.getValor() - valorDesconto;
     }
     */
-    
-    public void verificaVencimento() {
-        if(LocalDate.now().isAfter(this.dataValidade)) {
-            this.situacao = EnumSituacao.VENCIDO;
-        }        
-    }
     
     public Timestamp getCodigo() {
         return codigo;
@@ -53,8 +46,12 @@ public class Pedido {
         return carrinho;
     }
 
-    public EnumSituacao getEstado() {
-        return situacao;
+    public EstadoSituacao getEstado() {
+        return estado;
+    }
+    
+    public void setEstado(EstadoSituacao estado) {
+        this.estado = estado;
     }
     
     public LocalDate getData() {
@@ -65,16 +62,7 @@ public class Pedido {
         return dataValidade;
     }
 
-    public double getValorDesconto() {
-        return valorDesconto;
-    }
-
     public double getValorAPagar() {
         return valorAPagar;
     }
-
-    public void setEstado(EnumSituacao estado) {
-        this.situacao = estado;
-    }
-    
 }

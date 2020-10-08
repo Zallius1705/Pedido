@@ -6,6 +6,7 @@
 package br.ufes.model;
 
 import br.ufes.arquivo.IArquivo;
+import java.sql.Timestamp;
 
 /**
  *
@@ -13,19 +14,19 @@ import br.ufes.arquivo.IArquivo;
  */
 public class NotaFiscal {
     
-    private final long id;
+    protected final Timestamp id;
     private double valorNF;
     private double valorIcms;
     private Pedido pedido;
 
-    public NotaFiscal(long id, double valorNF, double valorIcms, Pedido pedido) {
-        this.id = id;
+    public NotaFiscal(double valorNF, double valorIcms, Pedido pedido) {
+        this.id = new Timestamp(System.currentTimeMillis());
         this.valorNF = valorNF;
         this.valorIcms = valorIcms;
         this.pedido = pedido;
     }
     
-    public long getId() {
+    public Timestamp getId() {
         return id;
     }
 

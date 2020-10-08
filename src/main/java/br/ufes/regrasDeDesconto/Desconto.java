@@ -5,12 +5,18 @@
  */
 package br.ufes.regrasDeDesconto;
 
-import br.ufes.model.CarrinhoDeCompra;
+import br.ufes.model.Compra;
 
 /**
  *
  * @author Lucas
  */
-public interface IDescontosStrategy {
-    public double calcula(CarrinhoDeCompra carrinhoDeCompra);
+public abstract class Desconto {
+    protected Desconto proximo;
+    
+    public void setProximo(Desconto proximo) {
+        this.proximo = proximo;
+    }
+    
+    public abstract void desconto(Compra compra);
 }

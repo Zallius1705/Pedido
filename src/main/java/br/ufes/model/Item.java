@@ -46,6 +46,10 @@ public final class Item {
         this.quantidade = quantidade;
     }
 
+    public void setValorItem(double valorItem) {
+        this.valorItem = valorItem;
+    }
+    
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("0.00");
