@@ -37,6 +37,10 @@ public final class Cliente {
         this.cupons = cupons;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
     @Override
     public String toString() {
         return "Cliente: " + nome + ", CNPJ/CPF = " + cNPJOuCPF;

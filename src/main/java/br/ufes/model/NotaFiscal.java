@@ -5,22 +5,28 @@
  */
 package br.ufes.model;
 
+import br.ufes.enums.EnumUF;
 import java.sql.Timestamp;
 
 /**
  *
  * @author Maycon
  */
-public class NotaFiscal {
+public final class NotaFiscal {
     
     protected final Timestamp id;
-    private double valorIcms;
-    private Pedido pedido;
+    private final double valorIcms;
+    private final Pedido pedido;
 
-    public NotaFiscal(double valorIcms, Pedido pedido) {
+    public NotaFiscal(Pedido pedido) {
         this.id = new Timestamp(System.currentTimeMillis());
-        this.valorIcms = valorIcms;
         this.pedido = pedido;
+        
+        if (this.getPedido().getCarrinho().getCliente().getEndereco().getUf() == EnumUF.ES) {
+            this.valorIcms = this.pedido.getValorAPagar() * 0.17;
+        }   else {
+            this.valorIcms = this.pedido.getValorAPagar() * 0.12;
+        }
     }
     
     public Timestamp getId() {
@@ -34,6 +40,5 @@ public class NotaFiscal {
     public Pedido getPedido() {
         return pedido;
     }
-    
     
 }
