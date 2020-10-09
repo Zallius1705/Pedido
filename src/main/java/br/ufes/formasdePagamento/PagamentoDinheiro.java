@@ -7,6 +7,7 @@ package br.ufes.formasdePagamento;
 
 import br.ufes.estadoPedido.EstadoInicial;
 import br.ufes.estadoPedido.EstadoPago;
+import br.ufes.estadoPedido.EstadoVencido;
 import br.ufes.model.Pedido;
 
 /**
@@ -20,6 +21,7 @@ public class PagamentoDinheiro implements IPagamentoStrategy{
         
         if(pedido.getEstado() == new EstadoInicial()) {
             pedido.setEstado(new EstadoPago());
+            pedido.setPagamentoStrategy(this);
             
             pedido.getCarrinho().getItens().forEach(item -> {
                 item.getProduto().getEstoque().setQuantidade(item.getProduto().getEstoque().getQuantidade() - item.getQuantidade());
@@ -27,7 +29,8 @@ public class PagamentoDinheiro implements IPagamentoStrategy{
 
             pedido.getCarrinho().getCliente().setCupons(pedido.getCarrinho().getCliente().getCupons() + (int) (pedido.getValorAPagar() * 0.02));
         }   else {
-            throw new RuntimeException("Pedido não está mais em andamento!");
+            pedido.setEstado(new EstadoVencido());
+            throw new RuntimeException("Pedido vencido!");
         }
     }
 }

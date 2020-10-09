@@ -29,7 +29,13 @@ public final class CarrinhoDeCompra {
         if (this.getItemPorNome(produto.getNome()).isPresent()) {
             throw new RuntimeException("Produto já existe! Remova-o ou altere a quantidade");
         }
-        itens.add(new Item(produto, quantidade));
+        
+        if(produto.estoqueDisponivel(quantidade)) {
+            itens.add(new Item(produto, quantidade));
+        }   else {
+            throw new RuntimeException("Quantidade indisponivel para este produto!");
+        }
+        
         calcularValor();
     }
     

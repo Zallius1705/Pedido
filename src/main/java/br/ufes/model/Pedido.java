@@ -31,12 +31,6 @@ public class Pedido {
         this.setEstado(new EstadoInicial());
         this.valorAPagar = valorAPagar;
     }
-    /*
-    private void aplicarDesconto() {
-        this.valorDesconto = this.descontoStrategy.calculaDesconto(this.carrinho) * carrinho.getValor();
-        this.valorAPagar = carrinho.getValor() - valorDesconto;
-    }
-    */
     
     public Timestamp getCodigo() {
         return codigo;
@@ -64,5 +58,9 @@ public class Pedido {
 
     public double getValorAPagar() {
         return valorAPagar;
+    }
+
+    public void setPagamentoStrategy(IPagamentoStrategy pagamentoStrategy) {
+        this.pagamentoStrategy = pagamentoStrategy;
     }
 }
