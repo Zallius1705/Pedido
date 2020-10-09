@@ -11,7 +11,14 @@ import br.ufes.model.Compra;
  *
  * @author Lucas
  */
-public interface DescontoHandler {
-    public void setProximo(DescontoHandler proximo);
-    public void handleRequest(Compra compra) throws Exception;
+public class SemDesconto implements Desconto{
+
+    @Override
+    public void setProximo(Desconto proximo) {
+    }
+
+    @Override
+    public void calcular(Compra compra) {
+    }
+    
 }

@@ -1,9 +1,10 @@
 package br.ufes.model;
 
-import br.ufes.regrasDeDesconto.AniversarioDescontoHandler;
-import br.ufes.regrasDeDesconto.CuponsDescontoHandler;
-import br.ufes.regrasDeDesconto.AbstractDescontoHandler;
-import br.ufes.regrasDeDesconto.TipoDescontoHandler;
+import br.ufes.regrasDeDesconto.Desconto;
+import br.ufes.regrasDeDesconto.DescontoPorAniversario;
+import br.ufes.regrasDeDesconto.DescontoPorCupons;
+import br.ufes.regrasDeDesconto.DescontoPorTipoItem;
+import br.ufes.regrasDeDesconto.SemDesconto;
 import java.time.LocalDate;
 
 /**
@@ -12,26 +13,32 @@ import java.time.LocalDate;
  */
 public class Compra {
     protected final CarrinhoDeCompra carrinho;
-    protected double valorDesconto;
-    protected AbstractDescontoHandler desconto;
+    protected double valorDesconto = 0;
     protected LocalDate dataCompra;
 
     public Compra(CarrinhoDeCompra carrinho) {
         this.carrinho = carrinho;
         this.dataCompra = LocalDate.now();
-        
-        //Chain handlers
-        AbstractDescontoHandler aniversarioDescontoHandler = new AniversarioDescontoHandler();
-        AbstractDescontoHandler cuponsDescontoHandler = new CuponsDescontoHandler();
-        AbstractDescontoHandler tipoDescontoHandler = new TipoDescontoHandler();
-        
-        this.desconto = aniversarioDescontoHandler;
+        calculaDesconto();
     }
     
     public Pedido fechar() {
         Pedido pedido = new Pedido(this.carrinho, this.dataCompra, (this.carrinho.getValor() - this.getValorDesconto()));
         return pedido;
-    }   
+    }
+    
+    public final void calculaDesconto() {
+        final Desconto descontoPorAniversario = new DescontoPorAniversario();
+        final Desconto descontoPorCupons = new DescontoPorCupons();
+        final Desconto descontoPorTipoItem = new DescontoPorTipoItem();
+        final Desconto semDesconto = new SemDesconto();
+        
+        descontoPorAniversario.setProximo(descontoPorCupons);
+        descontoPorCupons.setProximo(descontoPorTipoItem);
+        descontoPorTipoItem.setProximo(semDesconto);
+        
+        descontoPorAniversario.calcular(this);
+    }
 
     public CarrinhoDeCompra getCarrinho() {
         return carrinho;
