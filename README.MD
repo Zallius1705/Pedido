@@ -1,6 +1,6 @@
-#PSS_Pedido_002
+PSS_Pedido_002
 
-###Grupo:
+Grupo:
 
 Artur H. de Souza M. Santana - 2013203636
 Eduardo Felipe T. G. Domingues - 2016203716
