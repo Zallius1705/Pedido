@@ -5,16 +5,12 @@
  */
 package br.ufes.arquivo;
 
-import br.ufes.model.Item;
 import br.ufes.model.NotaFiscal;
-import br.ufes.model.Pedido;
 import com.google.gson.Gson;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.json.JSONObject;
 
 /**
  *
@@ -35,7 +31,7 @@ public class ArquivoJSON implements IArquivo{
         String aux = gson.toJson(nota.getPedido());
            
         try {
-            arquivo = new FileWriter("NotaFiscal" + nome + ".json");
+            arquivo = new FileWriter("Pedido" + nome + ".json");
             arquivo.write(aux);
             arquivo.close();
             

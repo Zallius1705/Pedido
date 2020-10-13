@@ -22,9 +22,9 @@ public class EstadoPago implements EstadoSituacao {
 
     @Override
     public NotaFiscal gerarNotaFiscal(Pedido pedido) {
-        //NotaFiscal notaFiscal = new NotaFiscal();
-        //return notaFiscal;
-        return null;
+        NotaFiscal notaFiscal = new NotaFiscal(pedido);
+        return notaFiscal;
+        //return null;
     }
     
 }

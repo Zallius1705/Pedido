@@ -13,6 +13,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,14 +29,15 @@ public class ArquivoPDF implements IArquivo{
         Document documento = new Document();
         String nome = nota.getPedido().getCarrinho().getCliente().getNome();
         
-        String aux = "Nota Fiscal nº " + nota.getId() + "\n";
+        String aux = "Nota Fiscal - " + nota.getId() + "\n";
+        
         aux += "---------------------------------------------------------\n";
-        aux += "Cliente\n";
+        aux += "Informações do cliente\n";
         aux += "    Nome: " + nota.getPedido().getCarrinho().getCliente().getNome() + "\n";
         aux += "    CPF/CNPJ: " + nota.getPedido().getCarrinho().getCliente().getCNPJOuCPF() + "\n";
         aux += "    Data de Nasc: " + nota.getPedido().getCarrinho().getCliente().getDataNascimento() + "\n";
         aux += "---------------------------------------------------------\n";
-        aux += "Endereco\n";
+        aux += "Endereço\n";
         aux += "    Logradouro: " + nota.getPedido().getCarrinho().getCliente().getEndereco().getLogradouro() + ", ";
         aux += nota.getPedido().getCarrinho().getCliente().getEndereco().getNumero() + ", ";
         aux += nota.getPedido().getCarrinho().getCliente().getEndereco().getComplemento() + "\n";
@@ -48,15 +50,15 @@ public class ArquivoPDF implements IArquivo{
         for (Item item : nota.getPedido().getCarrinho().getItens())
             aux += "    -" + item.toString() + "\n";
         aux += "---------------------------------------------------------\n";
-        aux += "Valor sem desconto: R$ " + nota.getPedido().getCarrinho().getValor() + "        ";
-        aux += "ICMS: " + nota.getValorIcms() + "       Total R$: " + ((nota.getPedido().getCarrinho().getValor()) + (nota.getValorIcms())) + "\n";
-        aux += "    Desconto: R$ " + "\n\n";
+        aux += "Valor do pedido: R$ " + nota.getPedido().getCarrinho().getValor() + "        ";
+        aux += "Valor do desconto: R$ " + (nota.getPedido().getCarrinho().getValor() - nota.getPedido().getValorAPagar()) + "       ";
+        aux += "Valor como desconto: R$ " + nota.getPedido().getValorAPagar() + "\n";
+        DecimalFormat df = new DecimalFormat("0.00");
+        aux += "ICMS: " + df.format(nota.getValorIcms()) + "\n\n";     
+        aux += "Total a pagar R$: " + df.format((nota.getPedido().getValorAPagar()) + (nota.getValorIcms()));
 
-        aux += "Total a pagar: R$ " + nota.getPedido().getValorAPagar() + "\n";
-        
-        
         try {
-            PdfWriter.getInstance(documento, new FileOutputStream("NotaFisca" + nome + ".pdf"));
+            PdfWriter.getInstance(documento, new FileOutputStream("NotaFiscal" + nome + ".pdf"));
             documento.open();
             documento.add(new Paragraph(aux));
             documento.close();

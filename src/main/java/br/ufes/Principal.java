@@ -6,6 +6,9 @@ import br.ufes.model.Cliente;
 import br.ufes.model.CarrinhoDeCompra;
 import br.ufes.model.Endereco;
 import br.ufes.enums.EnumUF;
+import br.ufes.estadoPedido.EstadoInicial;
+import br.ufes.estadoPedido.EstadoPago;
+import br.ufes.formasdePagamento.PagamentoDinheiro;
 import br.ufes.model.Compra;
 import br.ufes.model.NotaFiscal;
 import br.ufes.model.Pedido;
@@ -37,9 +40,13 @@ public class Principal {
             
             Compra compra1 = new Compra(car1);
             
-            NotaFiscal nota1 = new NotaFiscal(compra1.fechar());
+            Pedido p = compra1.fechar();     
+
+            p.setEstado(new EstadoPago());
             
-            System.out.println(nota1.getPedido().getCarrinho());
+            NotaFiscal nota1 = p.getEstado().gerarNotaFiscal(p);
+            
+            System.out.println(nota1.getPedido().getCarrinho() + "Valor com descontos: RS" + nota1.getPedido().getValorAPagar());
             
             ArquivoJSON json = new ArquivoJSON();
             ArquivoPDF pdf = new ArquivoPDF();
